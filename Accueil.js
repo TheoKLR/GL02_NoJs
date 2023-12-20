@@ -137,6 +137,7 @@ function passExam(examName) {
             
         });
         console.log(`Vous avez obtenu le score de ${score} sur ${scoreMax} à ce test.`);
+        console.log(`Votre score en pourcentage est ${(score / scoreMax) * 100}%.`);
 
     } catch (error) {
         console.error('Erreur lors de la lecture de l\'examen :', error.message);
