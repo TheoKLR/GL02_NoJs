@@ -16,12 +16,14 @@ function verifierDossierExamen() {
     }
 }
 
+//Demander le nom du fichier d'examen
 function demanderNomFichierExamen() {
     verifierDossierExamen();
     nomFichierExamen = path.join(dossierExamen, prompt("Entrez le nom que vous souhaitez donner au fichier d'examen (sans extension) : ") + '.json');
     demanderUnite();
 }
 
+//Afficher les questions
 function afficherQuestions(unit) {
     const dossier = 'SujetB_data_format_json';
     const fichiers = fs.readdirSync(dossier).filter(fichier => fichier.endsWith('.json') && fichier.includes(unit));
@@ -49,6 +51,7 @@ function afficherQuestions(unit) {
     return questions;
 }
 
+//Créer un examen
 function creerExamen(question) {
     examen.questions.push(question);
     if (examen.questions.length >= MAX_QUESTIONS) {
@@ -60,6 +63,7 @@ function creerExamen(question) {
     }
 }
 
+//lire Option
 function lireOption(questions) {
     console.log("\nQue souhaitez-vous faire ?");
     console.log("1. Choisir une question dans la même unité");
@@ -93,6 +97,7 @@ function lireOption(questions) {
     }
 }
 
+//Choisir une question dans la même unité
 function choisirQuestionMemeUnite(unit) {
     const questions = afficherQuestions(unit);
     if (questions.length > 0) {
@@ -120,6 +125,7 @@ function questionDejaSelectionnee(question) {
     return examen.questions.some(q => q.title === question.title && q.stem.text === question.stem.text);
 }
 
+//Demande une unité
 function demanderUnite() {
     const userUnit = prompt("Veuillez entrer le numéro de l'unité (U1, U2, ...U11) : ");
     if (userUnit.toLowerCase() === 0) {
@@ -134,6 +140,7 @@ function demanderUnite() {
     }
 }
 
+//Terminer un examen
 function terminerExamen() {
     const examenJSON = JSON.stringify(examen, null, 2);
     fs.writeFileSync(nomFichierExamen, examenJSON);

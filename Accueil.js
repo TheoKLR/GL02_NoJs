@@ -35,10 +35,13 @@ function passExam(examName) {
     const examPath = path.join(examsFolder, examName);
 
     try {
+        //On lit les données
         const examData = JSON.parse(fs.readFileSync(examPath, 'utf8'));
         const questions = examData.questions;
         let score=0;
         let scoreMax=0;
+
+        //On affiche les questions
         console.log(`Questions de l'examen "${examName}":`);
         questions.forEach((question, index) => {
             let correctAnswers = [];
@@ -46,6 +49,7 @@ function passExam(examName) {
             console.log(question.stem.text);
             let typeOfQuestion = typeQuestion(question);
 
+            //Affichage différent en fonction du type de questions
             switch(typeOfQuestion) {
                 case 'MC':
                     
@@ -181,6 +185,7 @@ function viewQuestionsInExam(examName) {
     showMenu();
 }
 
+//Affiche un examens parmi ceux qui ont déja été crées
 function viewExams() {
     const examFiles = fs.readdirSync(examsFolder);
     console.log('Examens existants :');
@@ -204,7 +209,7 @@ function viewExams() {
     }
 }
 
-
+//Simuler un examen
 function simulateExam() {
     const examFiles = fs.readdirSync(examsFolder);
     console.log('Quel examen souhaitez-vous faire passer ?');
@@ -230,7 +235,7 @@ function simulateExam() {
     }
 }
 
-
+//Montre le menu
 function showMenu() {
     console.log('\nChoisissez une option :\n1. Naviguer dans les questions\n2. Composer un examen\n3. Voir les examens existants\n4. Simuler la passation d\'un examen\n5. Quitter\n');
     
