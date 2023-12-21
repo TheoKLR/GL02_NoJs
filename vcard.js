@@ -7,7 +7,8 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-const VCard = VCard();
+function vcard(){
+  const VCard = VCard();
 
 rl.question('First name: ', (firstName) => {
   vcard.firstName = firstName;
@@ -38,3 +39,8 @@ rl.question('First name: ', (firstName) => {
     });
   });
 });
+}
+
+
+
+module.exports = {vcard};

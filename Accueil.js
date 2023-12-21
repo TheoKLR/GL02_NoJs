@@ -1,7 +1,7 @@
 const fs = require('fs');
 const readlineSync = require('readline-sync');
 const path = require('path');
-
+const {vcard} = require('./vcard');
 //
 // test push lucas
 
@@ -238,7 +238,7 @@ function simulateExam() {
 
 //Montre le menu
 function showMenu() {
-    console.log('\nChoisissez une option :\n1. Naviguer dans les questions\n2. Composer un examen\n3. Voir les examens existants\n4. Simuler la passation d\'un examen\n5. Quitter\n');
+    console.log('\nChoisissez une option :\n1. Naviguer dans les questions\n2. Composer un examen\n3. Voir les examens existants\n4. Simuler la passation d\'un examen\n5. VCard\n6. Quitter\n');
     
     const choice = readlineSync.question('Votre choix : ');
 
@@ -256,6 +256,9 @@ function showMenu() {
             simulateExam();
             break;
         case '5':
+            vcard();
+            break;
+        case '6':
             console.log('Au revoir!');
             break;
         default:
