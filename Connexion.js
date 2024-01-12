@@ -1,3 +1,6 @@
+
+// coding: utf-8
+
 const readline = require('readline-sync');
 const fs = require('fs');
 
@@ -67,7 +70,9 @@ function redirectToAccueil() {
 
 
 function showMenuConnexion() {
-    let choice = readline.question('Choisissez une option:\n1. Créer un compte\n2. Se connecter\n3. Quitter\n');
+
+    console.log('Choisissez une option:\n1. Créer un compte\n2. Se connecter\n3. Quitter\n'); // Test d'affichage de caractères accentués
+    let choice = readline.question('');
 
     switch (choice) {
         case '1':
